@@ -1,14 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import { createContext } from 'react';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import MessageBoard from './MessageBoard';
 import AllPosts from './AllPosts';
 import PostView from './PostView';
-import Welcome from './Welcome';
+import Welcome, { welcomeLoader } from './Welcome';
 import NavBar from './NavBar';
+import { SupashipUserInfo, useSession } from './use-session';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +29,7 @@ const router = createBrowserRouter([
       {
         path: "welcome",
         element: <Welcome />,
+        loader: welcomeLoader,
       },
     ],
   },
@@ -41,13 +39,22 @@ function App() {
   return <RouterProvider router={router} />
 }
 
-export default App;
+
+export const UserContext = createContext<SupashipUserInfo>({
+  session: null,
+  profile: null,
+});
 
 function Layout() {
+  const supashipUserInfo = useSession();
   return (
     <>
-      <NavBar />
-      <Outlet />
+      <UserContext.Provider value={supashipUserInfo}>
+        <NavBar />
+        <Outlet />
+      </UserContext.Provider>
     </>
   );
 }
+
+export default App;
