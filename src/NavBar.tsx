@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { UserContext } from './App';
 //import Login from "./Login";
 import UserMenu from "./UserMenu";
+import thinksLogo from "./assets/thinks_logo.svg"
 
 export default function NavBar() {
     const { session } = useContext(UserContext);
@@ -13,7 +14,7 @@ export default function NavBar() {
                 <img 
                     id="logo"
                     className="nav-logo"
-                    src="https://supaship.io/supaship_logo_with_text.svg"
+                    src= {thinksLogo}
                     alt="logo"
                 />
             </Link>
