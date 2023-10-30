@@ -8,13 +8,15 @@ export default function UserMenu() {
   return (
     <>
       <div className="flex flex-col">
-        <h2>Welcome {profile?.username || "dawg"}.</h2>
+        <h2>
+        👋 Welcome, {profile?.username || "dawg"}.
         <button
           onClick={() => supaClient.auth.signOut()}
           className="user-menu-logout-button"
         >
           Logout
         </button>
+        </h2>
       </div>
     </>
   );

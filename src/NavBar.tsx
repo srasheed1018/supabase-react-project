@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from './App';
-//import Login from "./Login";
+import Login from "./Login";
 import UserMenu from "./UserMenu";
 import thinksLogo from "./assets/thinks_logo.svg"
 
@@ -10,7 +10,7 @@ export default function NavBar() {
     return (
         <>
         <nav className="nav-bar">
-            <Link className="nav-logo-link" to="/">
+            <Link className="nav-logo-link" to="/1">
                 <img 
                     id="logo"
                     className="nav-logo"
@@ -18,17 +18,6 @@ export default function NavBar() {
                     alt="logo"
                 />
             </Link>
-
-            <ul className="nav-right-list">
-                <li className="nav-message-board-list-item">
-                    <Link to="/1" className="nav-message-board-link">
-                        message board
-                    </Link>
-                </li>
-                <li className='nav-auth-item'>
-                    {session?.user ? <UserMenu /> : <></>}
-                </li>
-            </ul>
         </nav>
         </>
     );
