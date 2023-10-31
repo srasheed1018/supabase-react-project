@@ -52,6 +52,12 @@ export default function Login() {
           <>
             <Auth
               supabaseClient={supaClient}
+              providers={["google"]}
+              queryParams={{
+                access_type: 'offline',
+                prompt: 'consent',
+              }}
+              onlyThirdPartyProviders
               appearance={{
                 theme: ThemeSupa,
                 className: {
